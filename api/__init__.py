@@ -1,4 +1,5 @@
 import traceback
+import importlib
 
 import requests
 
@@ -10,6 +11,12 @@ fh = logging.FileHandler(LOGGER_CONFIG["file"])
 fh.setLevel(LOGGER_CONFIG["level"])
 fh.setFormatter(LOGGER_CONFIG["formatter"])
 
+def update_rate(from_currency, to_currency):
+    xrate = XRate.select().where(XRate.from_currency == from_currency,
+                                XRate.to_currency == to_currency).first()
+    
+    module = importlib.import_module(f"api.{xrate.module}")
+    module.Api().update_rate(xrate)
 
 class _Api:
     def __init__(self, logger_name):

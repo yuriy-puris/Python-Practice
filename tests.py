@@ -5,9 +5,9 @@ from unittest.mock import patch
 import requests
 
 import models
-import api.privat_api as privat_api
-import api.cbr_api as cbr_api
-import api.cryptonator_api as cryptonator_api
+# import api.privat_api as privat_api
+# import api.cbr_api as cbr_api
+# import api.cryptonator_api as cryptonator_api
 import api
 
 
@@ -34,7 +34,7 @@ class Test(unittest.TestCase):
         updated_before = xrate.updated
         self.assertEqual(xrate.rate, 1.0)
 
-        privat_api.Api().update_rate(840, 980)
+        api.update_rate(840, 980)
 
         xrate = models.XRate.get(id=1)
         updated_after = xrate.updated
@@ -63,7 +63,7 @@ class Test(unittest.TestCase):
         updated_before = xrate.updated
         self.assertEqual(xrate.rate, 1.0)
 
-        privat_api.Api().update_rate(1000, 840)
+        api.update_rate(1000, 840)
 
         xrate = models.XRate.get(from_currency=1000, to_currency=840)
         updated_after = xrate.updated
@@ -81,7 +81,7 @@ class Test(unittest.TestCase):
         updated_before = xrate.updated
         self.assertEqual(xrate.rate, 1.0)
 
-        privat_api.Api().update_rate(840, 643)
+        api.update_rate(840, 643)
 
         xrate = models.XRate.get(from_currency=840, to_currency=643)
         updated_after = xrate.updated
@@ -103,7 +103,7 @@ class Test(unittest.TestCase):
         updated_before = xrate.updated
         self.assertEqual(xrate.rate, 1.0)
 
-        privat_api.Api().update_rate(840, 980)
+        api.update_rate(840, 980)
 
         xrate = models.XRate.get(id=1)
         updated_after = xrate.updated
@@ -156,7 +156,7 @@ class Test(unittest.TestCase):
         updated_before = xrate.updated
         self.assertEqual(xrate.rate, 1.0)
 
-        cryptonator_api.Api().update_rate(from_currency, to_currency)
+        api.update_rate(from_currency, to_currency)
 
         xrate = models.XRate.get(from_currency=from_currency, to_currency=to_currency)
         update_after = xrate.updated
