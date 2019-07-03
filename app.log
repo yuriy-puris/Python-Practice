@@ -162,3 +162,331 @@ requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.privatbank.ua'
 2019-07-02 23:38:42,151 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.90000', 'sale': '26.24672'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.05000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37800', 'sale': '0.41801'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10292.1243', 'sale': '11375.5058'}]
 2019-07-02 23:38:42,216 [DEBUG] - PrivatApi:rate after: XRate(840=>980): 26.24672
 2019-07-02 23:38:42,216 [INFO] - PrivatApi:Finished update for: 840=>980
+2019-07-03 12:06:07,075 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 12:06:07,076 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 12:06:07,137 [ERROR] - PrivatApi:Error during request sending
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\connection.py", line 80, in create_connection
+    raise err
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 344, in _make_request
+    self._validate_conn(conn)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 843, in _validate_conn
+    conn.connect()
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 316, in connect
+    conn = self._new_conn()
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 165, in _new_conn
+    (self.host, self.timeout))
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.VerifiedHTTPSConnection object at 0x000002B38C6F5668>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\retry.py", line 399, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.privatbank.ua', port=443): Max retries exceeded with url: /p24api/pubinfo?exchange&json&coursid=11 (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x000002B38C6F5668>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\api\__init__.py", line 40, in _send_request
+    response = self._send(method=method, url=url, headers=headers, data=data)
+  File "D:\python\PythonPractice\api\__init__.py", line 54, in _send
+    return requests.request(method=method, url=url, headers=headers, data=data, timeout=HTTP_TIMEOUT)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\adapters.py", line 504, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.privatbank.ua', port=443): Max retries exceeded with url: /p24api/pubinfo?exchange&json&coursid=11 (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x000002B38C6F5668>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)'))
+2019-07-03 12:06:08,663 [INFO] - PrivatApi:Started update for: 840=>643
+2019-07-03 12:06:08,666 [DEBUG] - PrivatApi:rate before: XRate(840=>643): 1.0
+2019-07-03 12:06:09,214 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10560.5451', 'sale': '11672.1815'}]
+2019-07-03 12:06:09,290 [DEBUG] - PrivatApi:rate after: XRate(840=>643): 26.17801
+2019-07-03 12:06:09,291 [INFO] - PrivatApi:Finished update for: 840=>643
+2019-07-03 12:06:10,462 [INFO] - CryptonatorApi:Started update for: 1000=>980
+2019-07-03 12:06:10,466 [DEBUG] - CryptonatorApi:rate before: XRate(1000=>980): 1.0
+2019-07-03 12:06:10,835 [DEBUG] - CryptonatorApi:Cryptonator response: {'ticker': {'base': 'BTC', 'target': 'UAH', 'price': '289902.10774221', 'volume': '86.45172575', 'change': '-6012.82629188'}, 'timestamp': 1562144764, 'success': True, 'error': ''}
+2019-07-03 12:06:10,901 [DEBUG] - CryptonatorApi:rate after: XRate(1000=>980): 289902.10774221
+2019-07-03 12:06:10,902 [INFO] - CryptonatorApi:Finished update for: 1000=>980
+2019-07-03 12:06:12,212 [INFO] - PrivatApi:Started update for: 1000=>840
+2019-07-03 12:06:12,213 [DEBUG] - PrivatApi:rate before: XRate(1000=>840): 1.0
+2019-07-03 12:06:12,790 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10560.5451', 'sale': '11672.1815'}]
+2019-07-03 12:06:12,935 [DEBUG] - PrivatApi:rate after: XRate(1000=>840): 11672.1815
+2019-07-03 12:06:12,936 [INFO] - PrivatApi:Finished update for: 1000=>840
+2019-07-03 12:06:15,094 [INFO] - PrivatApi:Started update for: 978=>980
+2019-07-03 12:06:15,098 [DEBUG] - PrivatApi:rate before: XRate(978=>980): 1.0
+2019-07-03 12:06:15,644 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10560.5451', 'sale': '11672.1815'}]
+2019-07-03 12:06:17,347 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 12:06:17,348 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 12:06:17,555 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'sale': '30.0'}]
+2019-07-03 12:06:17,634 [DEBUG] - PrivatApi:rate after: XRate(840=>980): 30.0
+2019-07-03 12:06:17,634 [INFO] - PrivatApi:Finished update for: 840=>980
+2019-07-03 12:06:19,069 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 12:06:19,071 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 12:06:19,657 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10513.0278', 'sale': '11619.6623'}]
+2019-07-03 12:06:19,845 [DEBUG] - PrivatApi:rate after: XRate(840=>980): 26.17801
+2019-07-03 12:06:19,846 [INFO] - PrivatApi:Finished update for: 840=>980
+2019-07-03 13:13:07,113 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 13:13:07,114 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 13:13:07,186 [ERROR] - PrivatApi:Error during request sending
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\connection.py", line 80, in create_connection
+    raise err
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 344, in _make_request
+    self._validate_conn(conn)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 843, in _validate_conn
+    conn.connect()
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 316, in connect
+    conn = self._new_conn()
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 165, in _new_conn
+    (self.host, self.timeout))
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.VerifiedHTTPSConnection object at 0x000001998F0B6828>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\retry.py", line 399, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.privatbank.ua', port=443): Max retries exceeded with url: /p24api/pubinfo?exchange&json&coursid=11 (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x000001998F0B6828>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\api\__init__.py", line 40, in _send_request
+    response = self._send(method=method, url=url, headers=headers, data=data)
+  File "D:\python\PythonPractice\api\__init__.py", line 54, in _send
+    return requests.request(method=method, url=url, headers=headers, data=data, timeout=HTTP_TIMEOUT)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\adapters.py", line 504, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.privatbank.ua', port=443): Max retries exceeded with url: /p24api/pubinfo?exchange&json&coursid=11 (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x000001998F0B6828>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)'))
+2019-07-03 13:13:08,708 [INFO] - PrivatApi:Started update for: 840=>643
+2019-07-03 13:13:08,711 [DEBUG] - PrivatApi:rate before: XRate(840=>643): 1.0
+2019-07-03 13:13:09,293 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10831.6261', 'sale': '11971.7973'}]
+2019-07-03 13:13:09,369 [DEBUG] - PrivatApi:rate after: XRate(840=>643): 26.17801
+2019-07-03 13:13:09,370 [INFO] - PrivatApi:Finished update for: 840=>643
+2019-07-03 13:13:10,604 [INFO] - CryptonatorApi:Started update for: 1000=>980
+2019-07-03 13:13:10,606 [DEBUG] - CryptonatorApi:rate before: XRate(1000=>980): 1.0
+2019-07-03 13:13:10,991 [DEBUG] - CryptonatorApi:Cryptonator response: {'ticker': {'base': 'BTC', 'target': 'UAH', 'price': '296393.71555561', 'volume': '86.90690998', 'change': '170.46578582'}, 'timestamp': 1562148783, 'success': True, 'error': ''}
+2019-07-03 13:13:11,114 [DEBUG] - CryptonatorApi:rate after: XRate(1000=>980): 296393.71555561
+2019-07-03 13:13:11,114 [INFO] - CryptonatorApi:Finished update for: 1000=>980
+2019-07-03 13:13:12,353 [INFO] - PrivatApi:Started update for: 1000=>840
+2019-07-03 13:13:12,356 [DEBUG] - PrivatApi:rate before: XRate(1000=>840): 1.0
+2019-07-03 13:13:12,916 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10831.6261', 'sale': '11971.7973'}]
+2019-07-03 13:13:12,991 [DEBUG] - PrivatApi:rate after: XRate(1000=>840): 11971.7973
+2019-07-03 13:13:12,992 [INFO] - PrivatApi:Finished update for: 1000=>840
+2019-07-03 13:13:14,228 [INFO] - PrivatApi:Started update for: 978=>980
+2019-07-03 13:13:14,230 [DEBUG] - PrivatApi:rate before: XRate(978=>980): 1.0
+2019-07-03 13:13:14,792 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10831.6261', 'sale': '11971.7973'}]
+2019-07-03 13:13:16,238 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 13:13:16,239 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 13:13:16,323 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'sale': '30.0'}]
+2019-07-03 13:13:16,403 [DEBUG] - PrivatApi:rate after: XRate(840=>980): 30.0
+2019-07-03 13:13:16,404 [INFO] - PrivatApi:Finished update for: 840=>980
+2019-07-03 13:13:17,875 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 13:13:17,881 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 13:13:18,403 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10831.6261', 'sale': '11971.7973'}]
+2019-07-03 13:13:18,503 [DEBUG] - PrivatApi:rate after: XRate(840=>980): 26.17801
+2019-07-03 13:13:18,503 [INFO] - PrivatApi:Finished update for: 840=>980
+2019-07-03 13:16:35,065 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 13:16:35,066 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 13:16:35,080 [ERROR] - PrivatApi:Error during request sending
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\connection.py", line 80, in create_connection
+    raise err
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 344, in _make_request
+    self._validate_conn(conn)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 843, in _validate_conn
+    conn.connect()
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 316, in connect
+    conn = self._new_conn()
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 165, in _new_conn
+    (self.host, self.timeout))
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.VerifiedHTTPSConnection object at 0x000002904AEE0400>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\retry.py", line 399, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.privatbank.ua', port=443): Max retries exceeded with url: /p24api/pubinfo?exchange&json&coursid=11 (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x000002904AEE0400>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\api\__init__.py", line 40, in _send_request
+    response = self._send(method=method, url=url, headers=headers, data=data)
+  File "D:\python\PythonPractice\api\__init__.py", line 54, in _send
+    return requests.request(method=method, url=url, headers=headers, data=data, timeout=HTTP_TIMEOUT)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\adapters.py", line 504, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.privatbank.ua', port=443): Max retries exceeded with url: /p24api/pubinfo?exchange&json&coursid=11 (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x000002904AEE0400>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)'))
+2019-07-03 13:16:36,577 [INFO] - PrivatApi:Started update for: 840=>643
+2019-07-03 13:16:36,581 [DEBUG] - PrivatApi:rate before: XRate(840=>643): 1.0
+2019-07-03 13:16:37,152 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10814.5324', 'sale': '11952.9042'}]
+2019-07-03 13:16:37,238 [DEBUG] - PrivatApi:rate after: XRate(840=>643): 26.17801
+2019-07-03 13:16:37,238 [INFO] - PrivatApi:Finished update for: 840=>643
+2019-07-03 13:16:39,085 [INFO] - CryptonatorApi:Started update for: 1000=>980
+2019-07-03 13:16:39,086 [DEBUG] - CryptonatorApi:rate before: XRate(1000=>980): 1.0
+2019-07-03 13:16:39,393 [DEBUG] - CryptonatorApi:Cryptonator response: {'ticker': {'base': 'BTC', 'target': 'UAH', 'price': '296790.59400980', 'volume': '87.00025098', 'change': '567.34424001'}, 'timestamp': 1562148962, 'success': True, 'error': ''}
+2019-07-03 13:16:39,473 [DEBUG] - CryptonatorApi:rate after: XRate(1000=>980): 296790.5940098
+2019-07-03 13:16:39,474 [INFO] - CryptonatorApi:Finished update for: 1000=>980
+2019-07-03 13:16:40,684 [INFO] - PrivatApi:Started update for: 1000=>840
+2019-07-03 13:16:40,685 [DEBUG] - PrivatApi:rate before: XRate(1000=>840): 1.0
+2019-07-03 13:16:41,208 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10814.5324', 'sale': '11952.9042'}]
+2019-07-03 13:16:41,272 [DEBUG] - PrivatApi:rate after: XRate(1000=>840): 11952.9042
+2019-07-03 13:16:41,272 [INFO] - PrivatApi:Finished update for: 1000=>840
+2019-07-03 13:16:42,631 [INFO] - PrivatApi:Started update for: 978=>980
+2019-07-03 13:16:42,633 [DEBUG] - PrivatApi:rate before: XRate(978=>980): 1.0
+2019-07-03 13:16:43,160 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10814.5324', 'sale': '11952.9042'}]
+2019-07-03 13:16:44,429 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 13:16:44,430 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 13:16:44,516 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'sale': '30.0'}]
+2019-07-03 13:16:44,595 [DEBUG] - PrivatApi:rate after: XRate(840=>980): 30.0
+2019-07-03 13:16:44,596 [INFO] - PrivatApi:Finished update for: 840=>980
+2019-07-03 13:16:46,170 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 13:16:46,176 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 13:16:46,716 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10814.5324', 'sale': '11952.9042'}]
+2019-07-03 13:16:46,794 [DEBUG] - PrivatApi:rate after: XRate(840=>980): 26.17801
+2019-07-03 13:16:46,795 [INFO] - PrivatApi:Finished update for: 840=>980
+2019-07-03 13:17:31,167 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 13:17:31,168 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 13:17:31,184 [ERROR] - PrivatApi:Error during request sending
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\connection.py", line 80, in create_connection
+    raise err
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 603, in urlopen
+    chunked=chunked)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 344, in _make_request
+    self._validate_conn(conn)
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 843, in _validate_conn
+    conn.connect()
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 316, in connect
+    conn = self._new_conn()
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connection.py", line 165, in _new_conn
+    (self.host, self.timeout))
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.VerifiedHTTPSConnection object at 0x0000015F75D30438>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\connectionpool.py", line 641, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\python\PythonPractice\env\lib\site-packages\urllib3\util\retry.py", line 399, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.privatbank.ua', port=443): Max retries exceeded with url: /p24api/pubinfo?exchange&json&coursid=11 (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x0000015F75D30438>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\python\PythonPractice\api\__init__.py", line 40, in _send_request
+    response = self._send(method=method, url=url, headers=headers, data=data)
+  File "D:\python\PythonPractice\api\__init__.py", line 54, in _send
+    return requests.request(method=method, url=url, headers=headers, data=data, timeout=HTTP_TIMEOUT)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\python\PythonPractice\env\lib\site-packages\requests\adapters.py", line 504, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.privatbank.ua', port=443): Max retries exceeded with url: /p24api/pubinfo?exchange&json&coursid=11 (Caused by ConnectTimeoutError(<urllib3.connection.VerifiedHTTPSConnection object at 0x0000015F75D30438>, 'Connection to api.privatbank.ua timed out. (connect timeout=0.001)'))
+2019-07-03 13:17:32,623 [INFO] - PrivatApi:Started update for: 840=>643
+2019-07-03 13:17:32,629 [DEBUG] - PrivatApi:rate before: XRate(840=>643): 1.0
+2019-07-03 13:17:33,163 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10814.5324', 'sale': '11952.9042'}]
+2019-07-03 13:17:33,241 [DEBUG] - PrivatApi:rate after: XRate(840=>643): 26.17801
+2019-07-03 13:17:33,242 [INFO] - PrivatApi:Finished update for: 840=>643
+2019-07-03 13:17:34,497 [INFO] - CryptonatorApi:Started update for: 1000=>980
+2019-07-03 13:17:34,498 [DEBUG] - CryptonatorApi:rate before: XRate(1000=>980): 1.0
+2019-07-03 13:17:34,742 [DEBUG] - CryptonatorApi:Cryptonator response: {'ticker': {'base': 'BTC', 'target': 'UAH', 'price': '296790.59400980', 'volume': '87.00025098', 'change': '567.34424001'}, 'timestamp': 1562148962, 'success': True, 'error': ''}
+2019-07-03 13:17:34,829 [DEBUG] - CryptonatorApi:rate after: XRate(1000=>980): 296790.5940098
+2019-07-03 13:17:34,829 [INFO] - CryptonatorApi:Finished update for: 1000=>980
+2019-07-03 13:17:36,107 [INFO] - PrivatApi:Started update for: 1000=>840
+2019-07-03 13:17:36,108 [DEBUG] - PrivatApi:rate before: XRate(1000=>840): 1.0
+2019-07-03 13:17:36,661 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10814.5324', 'sale': '11952.9042'}]
+2019-07-03 13:17:36,762 [DEBUG] - PrivatApi:rate after: XRate(1000=>840): 11952.9042
+2019-07-03 13:17:36,762 [INFO] - PrivatApi:Finished update for: 1000=>840
+2019-07-03 13:17:37,963 [INFO] - PrivatApi:Started update for: 978=>980
+2019-07-03 13:17:37,964 [DEBUG] - PrivatApi:rate before: XRate(978=>980): 1.0
+2019-07-03 13:17:38,565 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10814.5324', 'sale': '11952.9042'}]
+2019-07-03 13:17:39,875 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 13:17:39,876 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 13:17:39,950 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'sale': '30.0'}]
+2019-07-03 13:17:40,029 [DEBUG] - PrivatApi:rate after: XRate(840=>980): 30.0
+2019-07-03 13:17:40,030 [INFO] - PrivatApi:Finished update for: 840=>980
+2019-07-03 13:17:41,387 [INFO] - PrivatApi:Started update for: 840=>980
+2019-07-03 13:17:41,390 [DEBUG] - PrivatApi:rate before: XRate(840=>980): 1.0
+2019-07-03 13:17:41,930 [DEBUG] - PrivatApi:Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.85000', 'sale': '26.17801'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '29.00000', 'sale': '29.76190'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37500', 'sale': '0.41501'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '10814.5324', 'sale': '11952.9042'}]
+2019-07-03 13:17:42,017 [DEBUG] - PrivatApi:rate after: XRate(840=>980): 26.17801
+2019-07-03 13:17:42,018 [INFO] - PrivatApi:Finished update for: 840=>980
