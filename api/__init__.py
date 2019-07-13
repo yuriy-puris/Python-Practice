@@ -24,18 +24,15 @@ class _Api:
         self.log.addHandler(fh)
         self.log.setLevel(LOGGER_CONFIG["level"])
 
-    def update_rate(self, from_currency, to_currency):
-        self.log.info("Started update for: %s=>%s" % (from_currency, to_currency))
-        xrate = XRate.select().where(XRate.from_currency == from_currency,
-                                     XRate.to_currency == to_currency).first()
-
+    def update_rate(self, xrate):
+        self.log.info("Started update for: %s" % xrate)
         self.log.debug("rate before: %s", xrate)
         xrate.rate = self._update_rate(xrate)
         xrate.updated = peewee_datetime.datetime.now()
         xrate.save()
 
         self.log.debug("rate after: %s", xrate)
-        self.log.info("Finished update for: %s=>%s" % (from_currency, to_currency))
+        self.log.info("Finished update for: %s" % xrate)
 
     def _update_rate(self, xrate):
         raise NotImplementedError("_update_rate")
