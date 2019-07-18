@@ -4,15 +4,19 @@ from flask import request, render_template
 from app import app
 import controllers
 from config import IP_LIST
-
-def check_IP(func):
+def check_ip(func):
     @wraps(func)
     def checker(*args, **kwds):
-        if request.remote_addr not in IP_LIST:
+        if request.access_route:
+            client_ip = request.access_route[0]
+        else:
+            client_ip = request.remote_addr
+
+        if client_ip not in IP_LIST:
             return abort(403)
-        
+
         return func(*args, **kwds)
-    
+
     return checker
 
 @app.route('/')
