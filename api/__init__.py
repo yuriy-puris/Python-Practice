@@ -3,13 +3,11 @@ import importlib
 
 import requests
 
-from config import logging, LOGGER_CONFIG, HTTP_TIMEOUT
+from config import logging, HTTP_TIMEOUT, LOGGING
 
 from models import XRate, peewee_datetime, ApiLog, ErrorLog
 
-fh = logging.FileHandler(LOGGER_CONFIG["file"])
-fh.setLevel(LOGGER_CONFIG["level"])
-fh.setFormatter(LOGGER_CONFIG["formatter"])
+logging.config.dictConfig(LOGGING)
 
 def update_rate(from_currency, to_currency):
     xrate = XRate.select().where(XRate.from_currency == from_currency,
@@ -20,9 +18,8 @@ def update_rate(from_currency, to_currency):
 
 class _Api:
     def __init__(self, logger_name):
-        self.log = logging.getLogger(logger_name)
-        self.log.addHandler(fh)
-        self.log.setLevel(LOGGER_CONFIG["level"])
+        self.log = logging.getLogger('Api')
+        self.log.name = logger_name
 
     def update_rate(self, xrate):
         self.log.info("Started update for: %s" % xrate)

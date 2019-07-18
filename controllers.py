@@ -1,7 +1,8 @@
 from flask import render_template, request, redirect, make_response, jsonify, url_for
-from models import XRate, ApiLog
+from models import XRate, ApiLog, ErrorLog
 import xmltodict
 import api
+from app import app
 from datetime import datetime
 class BaseController():
     
@@ -107,9 +108,16 @@ class EditRate(BaseController):
         return redirect(url_for('view_rates'))
 
 class ViewLogs(BaseController):
-    def _call(self):
+    def _call(self, log_type):
+        app.logger.debug('log_type: %s' % log_type)
         page = int(self.request.args.get('page', 1))
-        logs = ApiLog.select().paginate(page, 10).order_by(ApiLog.id.desc())
+        logs_map = {'api': ApiLog, 'error': ErrorLog}
+
+        if log_type not in logs_map:
+            raise ValueError('Unknown log_type: %s' % log_type)
+
+        log_model = logs_map[log_type]
+        logs = log_model.select().paginate(page, 10).order_by(log_model.id.desc())
         return render_template('logs.html', logs=logs)
 
 
