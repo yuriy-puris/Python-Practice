@@ -1,8 +1,8 @@
-from flask import Flask
-from flask.logging import default_handler
-
 import logging
 from logging.config import dictConfig
+
+from flask import Flask
+from flask.logging import default_handler
 
 from config import LOGGING
 from models import start_db
