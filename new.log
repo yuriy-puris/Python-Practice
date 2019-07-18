@@ -44,3 +44,4 @@
 [2019-07-18 10:17:15,681] [DEBUG] - PrivatApi: Privat response: [{'ccy': 'USD', 'base_ccy': 'UAH', 'buy': '25.80000', 'sale': '26.10966'}, {'ccy': 'EUR', 'base_ccy': 'UAH', 'buy': '28.75000', 'sale': '29.32551'}, {'ccy': 'RUR', 'base_ccy': 'UAH', 'buy': '0.37600', 'sale': '0.41601'}, {'ccy': 'BTC', 'base_ccy': 'USD', 'buy': '9397.2021', 'sale': '10386.3813'}]
 [2019-07-18 10:17:15,780] [DEBUG] - PrivatApi: rate after: XRate(1000=>840): 10386.3813
 [2019-07-18 10:17:15,780] [INFO] - PrivatApi: Finished update for: XRate(1000=>840): 10386.3813
+[2019-07-18 15:58:49,166] [DEBUG] - GoldenEye: log_type: api
