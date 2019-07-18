@@ -1,9 +1,20 @@
+import os
+import urllib.parse
+
 from peewee import (SqliteDatabase, Model, IntegerField, DoubleField, DateTimeField, datetime as peewee_datetime,
-                    CharField, TextField)
+                    CharField, TextField, PostgresqlDatabase)
 
 import config
 
-db = SqliteDatabase(config.DB_NAME)
+if os.environ.get('DATABASE_URL'):
+    url = urllib.parse.urlparse(os.environ.get('DATABASE_URL'))
+    db = PostgresqlDatabase(host=url.hostname, 
+                            user=url.username,
+                            password=url.password,
+                            port=url.port,
+                            database=url.path[1:])
+else:
+    db = SqliteDatabase(config.DB_NAME)
 
 
 class _Model(Model):
@@ -70,18 +81,3 @@ def start_db():
             m.create_table()
 
         print("db created!")
-
-# def init_db():
-#     XRate.drop_table()
-#     XRate.create_table()
-#     XRate.create(from_currency=840, to_currency=980, rate=1, module="privat_api")
-#     XRate.create(from_currency=840, to_currency=643, rate=1, module="cbr_api")
-#     XRate.create(from_currency=1000, to_currency=840, rate=1, module="privat_api")
-#     XRate.create(from_currency=1000, to_currency=980, rate=1, module="cryptonator_api")
-#     XRate.create(from_currency=1000, to_currency=643, rate=1, module="cryptonator_api")
-
-#     for m in (ApiLog, ErrorLog):
-#         m.drop_table()
-#         m.create_table()
-
-#     print("db created!")
